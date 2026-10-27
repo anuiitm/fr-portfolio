@@ -1,0 +1,21 @@
+{
+  "name": "apfc-notes",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3110",
+    "build": "next build",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "highlight.js": "^11.12.0",
+    "katex": "^0.16.47",
+    "next": "16.3.6",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "eslint": "^9",
+    "eslint-config-next": "16.3.6"
+  }
+}

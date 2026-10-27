@@ -1,0 +1,103 @@
+import { h2, p, ul, li, table, key, trap, steps, quiz, cards, sources } from '../_b';
+
+export default {
+  updated: 'Sep 2026',
+  summary:
+    'A part of the sentence is underlined or in bold. Pick the option that **best replaces** it, or choose **"No improvement"**. The correct option must be **grammatical, idiomatic, concise and faithful to the original meaning**. The usual fixes are for **tense, agreement, idiom and fixed prepositions, parallelism, comparatives, redundancy, word order and modifiers**. It is the same skill as error spotting, but you must also choose the best correction.',
+  blocks: [
+    h2('Method'),
+    steps([
+      ['Read the whole sentence', 'The underlined part must fit the unchanged part (tense, number, structure).'],
+      ['Ask whether the underlined part is wrong', 'Test it against the grammar checklist. If it is correct and idiomatic, "No improvement" is likely.'],
+      ['Predict the correction', 'Before reading options, say what you would change.'],
+      ['Eliminate', 'Remove options that add errors, change meaning, or are wordy.'],
+      ['Re-read with your choice', 'The full sentence must read naturally.'],
+    ]),
+
+    h2('Common improvement patterns'),
+    table(
+      ['Pattern', 'Original', 'Improved'],
+      [
+        ['Tense sequence', 'He said that he **will come**.', 'He said that he **would come**.'],
+        ['Perfect tense with *since/for*', 'I **know** her since childhood.', 'I **have known** her since childhood.'],
+        ['Time clause', 'We will leave when he **will arrive**.', '…when he **arrives**.'],
+        ['Conditional', 'If I **was** you, I **will** apologise.', 'If I **were** you, I **would** apologise.'],
+        ['Past conditional', 'If he **would have** tried, he would have won.', 'If he **had tried**…'],
+        ['Idiom / fixed preposition', 'He is **good in** mathematics.', '…**good at** mathematics.'],
+        ['Verb + gerund', 'I look forward **to see** you.', '…**to seeing** you.'],
+        ['Bare infinitive', 'He made me **to wait**.', 'He made me **wait**.'],
+        ['Comparatives', 'He is **more wiser** than his brother.', '…**wiser** than…'],
+        ['Parallelism', 'He likes swimming, reading and **to play** chess.', '…and **playing** chess.'],
+        ['Correlatives', 'He is **not only** a poet **but** a painter also.', 'He is **not only** a poet **but also** a painter.'],
+        ['Word order in indirect question', 'Tell me **where is the office**.', 'Tell me **where the office is**.'],
+        ['Inversion', 'Seldom **he comes** here.', 'Seldom **does he come** here.'],
+        ['Redundancy', 'The two brothers **both** look alike.', 'The two brothers look alike.'],
+        ['Dangling modifier', '**Having finished** the work, the lights were switched off.', 'Having finished the work, **he switched off** the lights.'],
+        ['Pronoun case', 'It was **him** who called.', 'It was **he** who called.'],
+        ['Article', 'He is **an** one-eyed man.', 'He is **a** one-eyed man.'],
+        ['Word choice', 'The new law will **effect** everyone.', '…will **affect** everyone.'],
+        ['Question tags / emphasis', 'You are coming, **isn\'t it**?', 'You are coming, **aren\'t you**?'],
+        ['Indian English', 'He **passed out** from IIT in 2010.', 'He **graduated** from IIT in 2010.'],
+        ['Indian English', 'Please **revert back** at the earliest.', 'Please **reply** at the earliest.'],
+        ['Indian English', 'I am **having** a car.', 'I **have** a car.'],
+        ['*Hardly*', 'He **could not hardly** walk.', 'He **could hardly** walk.'],
+        ['*Lest*', 'Run fast lest you **may miss** the bus.', '…lest you **should miss** the bus.'],
+        ['*Would rather*', 'I would rather **to die** than surrender.', 'I would rather **die** than surrender.'],
+        ['*Than* after *rather/other*', 'He has no other aim **but** to succeed.', '…**than** to succeed.'],
+      ],
+    ),
+
+    h2('Indian English expressions to correct'),
+    table(
+      ['Avoid', 'Use'],
+      [
+        ['cousin brother / cousin sister', 'cousin'],
+        ['pass out (graduate)', 'graduate / complete'],
+        ['prepone', 'bring forward / advance'],
+        ['do the needful', 'do what is necessary'],
+        ['out of station', 'out of town'],
+        ['kindly revert back', 'please reply'],
+        ['discuss about, stress on (verb), emphasise on', 'discuss, stress, emphasise'],
+        ['I am having a headache / a car', 'I have a headache / a car'],
+        ['Myself Ravi', 'I am Ravi / My name is Ravi'],
+        ['What is your good name?', 'What is your name?'],
+        ['He is my co-brother', 'He is my wife\'s sister\'s husband / brother-in-law'],
+        ['I am knowing', 'I know'],
+        ['Order for a book', 'Order a book'],
+      ],
+    ),
+    key('How to pick among good-looking options', [
+      'Prefer the option that fixes the error **and** introduces no new one.',
+      'Prefer the **shorter** option when meaning is the same.',
+      'Reject options that change the meaning, tense or voice without need.',
+      'Choose "No improvement" only after testing the original like any other option.',
+    ]),
+    trap('Traps', [
+      'An option can look "fancier" but be wrong: *more superior*, *most perfect*.',
+      'A fix in one place may break agreement elsewhere in the sentence.',
+      'Examiners test "No improvement" regularly; do not avoid it out of habit.',
+    ]),
+
+    h2('Practice'),
+    quiz(
+      ['He **has returned** from Mumbai yesterday.', ['returned', 'had returned', 'has been returning', 'No improvement'], 0, 'Definite past time → simple past.'],
+      ['I **am waiting** for you since morning.', ['was waiting', 'have been waiting', 'had waited', 'No improvement'], 1, ''],
+      ['Hardly had he gone out **than** it started raining.', ['when', 'then', 'that', 'No improvement'], 0, ''],
+      ['She is **capable to do** this work.', ['capable in doing', 'capable of doing', 'capable for doing', 'No improvement'], 1, ''],
+      ['He objected **to be treated** like a child.', ['to being treated', 'for being treated', 'on being treated', 'No improvement'], 0, '*object to* + gerund.'],
+      ['If you **will work** hard, you will pass.', ['work', 'worked', 'would work', 'No improvement'], 0, 'First conditional: present in the *if*-clause.'],
+      ['The officer, **accompanied by his staff, has arrived**.', ['accompanied by his staff, have arrived', 'accompanied with his staff, has arrived', 'along his staff, has arrived', 'No improvement'], 3, 'Correct: verb agrees with *officer*.'],
+      ['**Being a rainy day**, we stayed indoors.', ['It being a rainy day', 'Being rainy day', 'As being a rainy day', 'No improvement'], 0, 'Absolute phrase needs its own subject *It*.'],
+    ),
+    cards([
+      ['object to', '+ gerund (-ing)'],
+      ['capable', 'of + gerund'],
+      ['would rather', '+ bare infinitive, + *than*'],
+      ['It was ___ who called.', 'he (formal subject case)'],
+    ]),
+    sources([
+      ['Cambridge Dictionary Grammar', 'https://dictionary.cambridge.org/grammar/british-grammar/'],
+      ['Oxford Learner\'s Dictionaries', 'https://www.oxfordlearnersdictionaries.com/'],
+    ]),
+  ],
+};

@@ -1,0 +1,8 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "npm ci --include=dev && npm ci --prefix apfc-notes --include=dev",
+  "buildCommand": "npm run build",
+  "outputDirectory": "site",
+  "trailingSlash": true
+}

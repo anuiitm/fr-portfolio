@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Frontend Portfolio — Projects</title>
+  <meta name="description" content="Explore nine frontend projects: dashboards, data stories, and everyday tools. Open a live demo or view the code.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#faf9f6">
+  <meta property="og:title" content="Frontend Portfolio">
+  <meta property="og:description" content="Nine frontend projects with working demos and source code.">
+  <meta property="og:image" content="img/bluestone-insights.jpg">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23455ce9'/%3E%3Cpath d='M12 11l-5 5 5 5M20 11l5 5-5 5' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="preload" href="fonts/SpaceGrotesk.ttf" as="font" type="font/ttf" crossorigin>
+  <script>
+    try { var t = localStorage.getItem('fp-theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#projects">Skip to projects</a>
+  <svg width="0" height="0" class="sprite" aria-hidden="true">
+    <symbol id="i-arrow" viewBox="0 0 16 16"><path d="M4 12 12 4M5 4h7v7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-right" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-code" viewBox="0 0 16 16"><path d="M5 4.5 1.5 8 5 11.5M11 4.5 14.5 8 11 11.5M9 2.5l-2 11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-search" viewBox="0 0 20 20"><circle cx="8.5" cy="8.5" r="5.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="m13 13 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+    <symbol id="i-down" viewBox="0 0 16 16"><path d="m4 6 4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </svg>
+  <main class="wrap">
+    <header class="masthead">
+      <div class="masthead-meta"><p>Frontend portfolio</p><span>09 projects</span></div>
+      <h1 id="portfolio-title">Selected work<span class="title-period">.</span></h1>
+      <p class="lede">Dashboards, interactive reports,<br>and tools for the web.</p>
+    </header>
+    <section class="collection" id="projects" aria-labelledby="portfolio-title">
+      <div class="collection-tools">
+        <div class="filters" id="browse-controls" role="group" aria-label="Filter projects by technology" hidden>
+          <button type="button" data-f="all" aria-pressed="true">All projects <span>09</span></button>
+          <button type="button" data-f="redux" aria-pressed="false">React + Redux <span>04</span></button>
+          <button type="button" data-f="ts" aria-pressed="false">TypeScript <span>01</span></button>
+          <button type="button" data-f="vanilla" aria-pressed="false">JavaScript <span>03</span></button>
+          <button type="button" data-f="next" aria-pressed="false">Next.js <span>01</span></button>
+        </div>
+        <div class="search-tools">
+          <div class="project-search" id="search-control" hidden><svg width="18" height="18" aria-hidden="true"><use href="#i-search"/></svg><label class="sr-only" for="project-search">Search projects or technologies</label><input id="project-search" type="search" placeholder="Search projects" autocomplete="off" aria-controls="project-grid"></div>
+          <button type="button" class="theme" id="theme" aria-label="Switch to dark theme" hidden><svg class="sun" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.6 17.6 19 19M5 19l1.4-1.4M17.6 6.4 19 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><svg class="moon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg><span id="theme-label">Dark mode</span></button>
+        </div>
+      </div>
+      <p class="filter-status" id="filter-status" role="status" aria-live="polite" aria-atomic="true">Showing all 9 projects</p>
+      <ul class="grid" id="project-grid">
+        <li class="project" id="bluestone" data-tags="redux" data-layout="feature" style="--cover: #282b38; --cover-dark: #282b38">
+          <a class="card-media" href="./bluestone-insights/" tabindex="-1" aria-hidden="true">
+            <span class="feature-copy">
+              <span class="feature-category">Customer review analysis</span>
+              <span class="feature-number">196k</span>
+              <span class="feature-label">customer reviews</span>
+              <span class="feature-scope"><span>316 stores</span><span>124 cities</span></span>
+            </span>
+            <span class="feature-shot"><img src="img/bluestone-insights.svg" width="720" height="450" alt="" fetchpriority="high"></span>
+          </a>
+          <div class="card-body">
+            <div class="project-info">
+              <div class="card-heading"><h2><a href="./bluestone-insights/">BlueStone Insights</a></h2><span class="project-index" aria-hidden="true">01</span></div>
+              <p class="desc">196,275 customer reviews across 316 stores, with ratings, response times, and interactive charts.</p>
+              <ul class="tags" aria-label="Built with"><li>React</li><li>Redux Toolkit</li><li>SVG charts</li></ul>
+            </div>
+            <div class="actions">
+              <a class="btn btn-primary" href="./bluestone-insights/">Open project <svg width="16" height="16" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              <a class="btn btn-secondary" data-source="bluestone-insights" href="https://github.com/anuiitm/fr-portfolio/tree/main/bluestone-insights"><svg width="16" height="16" aria-hidden="true"><use href="#i-code"/></svg> View code</a>
+            </div>
+          </div>
+        </li>
+        <li class="project" id="pettry" data-tags="redux" data-layout="standard" style="--cover: #e6e2de; --cover-dark: #34312f">
+          <a class="card-media" href="./pettry-admin/" tabindex="-1" aria-hidden="true">
+            <span class="media-label"><span>02 / E-commerce admin</span><svg width="18" height="18"><use href="#i-arrow"/></svg></span>
+            <span class="project-shot"><img src="img/pettry-admin.jpg" width="720" height="450" alt="" loading="lazy"></span>
+          </a>
+          <div class="card-body">
+            <div class="project-info">
+              <div class="card-heading"><h2><a href="./pettry-admin/">Pettry admin</a></h2><span class="project-index" aria-hidden="true">02</span></div>
+              <p class="desc">Orders, inventory, customers, and sales in one pet-store dashboard.</p>
+              <ul class="tags" aria-label="Built with"><li>React</li><li>Redux Toolkit</li></ul>
+            </div>
+            <div class="actions">
+              <a class="btn btn-primary" href="./pettry-admin/">Open project <svg width="16" height="16" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              <a class="btn btn-secondary" data-source="pettry-admin" href="https://github.com/anuiitm/fr-portfolio/tree/main/pettry-admin"><svg width="16" height="16" aria-hidden="true"><use href="#i-code"/></svg> View code</a>
+            </div>
+          </div>
+        </li>
+        <li class="project" id="veridoc" data-tags="redux" data-layout="standard" style="--cover: #dfe3ec; --cover-dark: #2e3442">
+          <a class="card-media" href="./veridoc-admin/" tabindex="-1" aria-hidden="true">
+            <span class="media-label"><span>03 / Workflow dashboard</span><svg width="18" height="18"><use href="#i-arrow"/></svg></span>
+            <span class="project-shot"><img src="img/veridoc-admin.jpg" width="720" height="450" alt="" loading="lazy"></span>
+          </a>
+          <div class="card-body">
+            <div class="project-info">
+              <div class="card-heading"><h2><a href="./veridoc-admin/">VeriDoc admin</a></h2><span class="project-index" aria-hidden="true">03</span></div>
+              <p class="desc">Loan-document checklists with review, approval, and version history.</p>
+              <ul class="tags" aria-label="Built with"><li>React</li><li>Redux Toolkit</li></ul>
+            </div>
+            <div class="actions">
+              <a class="btn btn-primary" href="./veridoc-admin/">Open project <svg width="16" height="16" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              <a class="btn btn-secondary" data-source="veridoc-admin" href="https://github.com/anuiitm/fr-portfolio/tree/main/veridoc-admin"><svg width="16" height="16" aria-hidden="true"><use href="#i-code"/></svg> View code</a>
+            </div>
+          </div>
+        </li>
+        <li class="project" id="resume" data-tags="redux" data-layout="standard" style="--cover: #edeae6; --cover-dark: #35312f">
+          <a class="card-media" href="./resume-builder/" tabindex="-1" aria-hidden="true">
+            <span class="media-label"><span>04 / Productivity tool</span><svg width="18" height="18"><use href="#i-arrow"/></svg></span>
+            <span class="project-shot"><img src="img/resume-builder.jpg" width="720" height="450" alt="" loading="lazy"></span>
+          </a>
+          <div class="card-body">
+            <div class="project-info">
+              <div class="card-heading"><h2><a href="./resume-builder/">Resume builder</a></h2><span class="project-index" aria-hidden="true">04</span></div>
+              <p class="desc">A live resume editor with job matching and print-ready PDF export.</p>
+              <ul class="tags" aria-label="Built with"><li>React</li><li>Redux Toolkit</li><li>Print CSS</li></ul>
+            </div>
+            <div class="actions">
+              <a class="btn btn-primary" href="./resume-builder/">Open project <svg width="16" height="16" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              <a class="btn btn-secondary" data-source="resume-builder" href="https://github.com/anuiitm/fr-portfolio/tree/main/resume-builder"><svg width="16" height="16" aria-hidden="true"><use href="#i-code"/></svg> View code</a>
+            </div>
+          </div>
+        </li>
+        <li class="project" id="naviable" data-tags="ts" data-layout="standard" style="--cover: #d9dfef; --cover-dark: #2d3553">
+          <a class="card-media" href="./naviable/" tabindex="-1" aria-hidden="true">
+            <span class="media-label"><span>05 / Accessibility</span><svg width="18" height="18"><use href="#i-arrow"/></svg></span>
+            <span class="project-shot"><img src="img/naviable.jpg" width="720" height="450" alt="" loading="lazy"></span>
+          </a>
+          <div class="card-body">
+            <div class="project-info">
+              <div class="card-heading"><h2><a href="./naviable/">NaviAble</a></h2><span class="project-index" aria-hidden="true">05</span></div>
+              <p class="desc">Reading, captioning, contrast, and accessibility tools that work in the browser.</p>
+              <ul class="tags" aria-label="Built with"><li>React</li><li>TypeScript</li><li>Web Speech API</li></ul>
+            </div>
+            <div class="actions">
+              <a class="btn btn-primary" href="./naviable/">Open project <svg width="16" height="16" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              <a class="btn btn-secondary" data-source="naviable" href="https://github.com/anuiitm/fr-portfolio/tree/main/naviable"><svg width="16" height="16" aria-hidden="true"><use href="#i-code"/></svg> View code</a>
+            </div>
+          </div>
+        </li>
+        <li class="project" id="spend" data-tags="vanilla" data-layout="standard" style="--cover: #e8dfd6; --cover-dark: #40362e">
+          <a class="card-media" href="./spend-calendar/" tabindex="-1" aria-hidden="true">
+            <span class="media-label"><span>06 / Personal finance</span><svg width="18" height="18"><use href="#i-arrow"/></svg></span>
+            <span class="project-shot"><img src="img/spend-calendar.jpg" width="720" height="450" alt="" loading="lazy"></span>
+          </a>
+          <div class="card-body">
+            <div class="project-info">
+              <div class="card-heading"><h2><a href="./spend-calendar/">Spend calendar</a></h2><span class="project-index" aria-hidden="true">06</span></div>
+              <p class="desc">Track credit-card spending, statement cycles, and payments on a calendar.</p>
+              <ul class="tags" aria-label="Built with"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+            </div>
+            <div class="actions">
+              <a class="btn btn-primary" href="./spend-calendar/">Open project <svg width="16" height="16" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              <a class="btn btn-secondary" data-source="spend-calendar" href="https://github.com/anuiitm/fr-portfolio/tree/main/spend-calendar"><svg width="16" height="16" aria-hidden="true"><use href="#i-code"/></svg> View code</a>
+            </div>
+          </div>
+        </li>
+        <li class="project" id="ipo" data-tags="vanilla" data-layout="standard" style="--cover: #dce1e4; --cover-dark: #2e353c">
+          <a class="card-media" href="./ipo-forensics/" tabindex="-1" aria-hidden="true">
+            <span class="media-label"><span>07 / Document search</span><svg width="18" height="18"><use href="#i-arrow"/></svg></span>
+            <span class="project-shot"><img src="img/ipo-forensics.jpg" width="720" height="450" alt="" loading="lazy"></span>
+          </a>
+          <div class="card-body">
+            <div class="project-info">
+              <div class="card-heading"><h2><a href="./ipo-forensics/">IPO Forensics</a></h2><span class="project-index" aria-hidden="true">07</span></div>
+              <p class="desc">Search IPO offer documents and trace every result back to its source.</p>
+              <ul class="tags" aria-label="Built with"><li>JavaScript modules</li></ul>
+            </div>
+            <div class="actions">
+              <a class="btn btn-primary" href="./ipo-forensics/">Open project <svg width="16" height="16" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              <a class="btn btn-secondary" data-source="ipo-forensics" href="https://github.com/anuiitm/fr-portfolio/tree/main/ipo-forensics"><svg width="16" height="16" aria-hidden="true"><use href="#i-code"/></svg> View code</a>
+            </div>
+          </div>
+        </li>
+        <li class="project" id="apfc" data-tags="next" data-layout="standard" style="--cover: #e7e2eb; --cover-dark: #38303f">
+          <a class="card-media" href="./apfc-notes/" tabindex="-1" aria-hidden="true">
+            <span class="media-label"><span>08 / Study site</span><svg width="18" height="18"><use href="#i-arrow"/></svg></span>
+            <span class="project-shot"><img src="img/apfc-notes.jpg" width="720" height="450" alt="" loading="lazy"></span>
+          </a>
+          <div class="card-body">
+            <div class="project-info">
+              <div class="card-heading"><h2><a href="./apfc-notes/">APFC exam notes</a></h2><span class="project-index" aria-hidden="true">08</span></div>
+              <p class="desc">Exam notes, flashcards, self-tests, and progress tracking.</p>
+              <ul class="tags" aria-label="Built with"><li>Next.js</li><li>React</li><li>KaTeX</li></ul>
+            </div>
+            <div class="actions">
+              <a class="btn btn-primary" href="./apfc-notes/">Open project <svg width="16" height="16" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              <a class="btn btn-secondary" data-source="apfc-notes" href="https://github.com/anuiitm/fr-portfolio/tree/main/apfc-notes"><svg width="16" height="16" aria-hidden="true"><use href="#i-code"/></svg> View code</a>
+            </div>
+          </div>
+        </li>
+        <li class="project" id="instimess" data-tags="vanilla" data-layout="standard" style="--cover: #ebddcf; --cover-dark: #49382d">
+          <a class="card-media" href="./instimess/" tabindex="-1" aria-hidden="true">
+            <span class="media-label"><span>09 / Utility</span><svg width="18" height="18"><use href="#i-arrow"/></svg></span>
+            <span class="project-shot"><img src="img/instimess.jpg" width="720" height="450" alt="" loading="lazy"></span>
+          </a>
+          <div class="card-body">
+            <div class="project-info">
+              <div class="card-heading"><h2><a href="./instimess/">InstiMess</a></h2><span class="project-index" aria-hidden="true">09</span></div>
+              <p class="desc">Daily menus for IIT Madras hostel messes, with the current meal highlighted.</p>
+              <ul class="tags" aria-label="Built with"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+            </div>
+            <div class="actions">
+              <a class="btn btn-primary" href="./instimess/">Open project <svg width="16" height="16" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              <a class="btn btn-secondary" data-source="instimess" href="https://github.com/anuiitm/fr-portfolio/tree/main/instimess"><svg width="16" height="16" aria-hidden="true"><use href="#i-code"/></svg> View code</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="empty-state" id="empty-state" hidden><svg width="28" height="28" aria-hidden="true"><use href="#i-search"/></svg><h2>No projects found</h2><p>Try another keyword or clear the filters.</p><button class="btn btn-primary" id="reset-filters" type="button">Show all projects</button></div>
+    </section>
+  </main>
+  <script src="app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 450" width="720" height="450" role="img" aria-labelledby="title desc">
+<title id="title">BlueStone insights preview</title><desc id="desc">A preview of the review dashboard with real review counts and reply-time data for 2021 to 2025.</desc>
+<rect width="720" height="450" fill="#f6f7fb"/>
+<g font-family="Arial, Helvetica, sans-serif">
+<rect x="292" y="12" width="136" height="32" rx="10" fill="white" stroke="#e5e8f1"/>
+<rect x="297" y="17" width="94" height="22" rx="6" fill="#edeefe"/><text x="325" y="32" font-size="9" fill="#4b55e7">Projects</text>
+<path d="M413 25a5 5 0 0 1-6-6 6 6 0 1 0 6 6" fill="none" stroke="#69738a"/>
+<text x="26" y="68" font-size="7" letter-spacing="1.2" fill="#4b55e7">REVIEW ANALYSIS</text>
+<text x="26" y="96" font-size="25" font-weight="700" letter-spacing="-.8" fill="#1d2538">BlueStone insights</text>
+<text x="26" y="115" font-size="8.5" fill="#69738a">Customer ratings and response times across 316 stores in 124 cities.</text>
+<text x="560" y="83" font-size="8" fill="#69738a">GOOGLE MAPS REVIEWS</text>
+<text x="560" y="101" font-size="13" font-weight="bold" fill="#1d2538">1,96,275 reviews</text>
+<rect x="26" y="130" width="668" height="31" rx="7" fill="white" stroke="#e5e8f1"/>
+<rect x="31" y="135" width="65" height="21" rx="4" fill="#edeefe"/>
+
+<text x="43" y="149" font-size="8" fill="#4b55e7">Overview</text>
+<text x="130" y="149" font-size="8" fill="#69738a">Reply times</text>
+<text x="217" y="149" font-size="8" fill="#69738a">Volume</text>
+<text x="304" y="149" font-size="8" fill="#69738a">Cities</text>
+<text x="391" y="149" font-size="8" fill="#69738a">Stores</text>
+<text x="478" y="149" font-size="8" fill="#69738a">Reviews</text>
+<text x="565" y="149" font-size="8" fill="#69738a">Findings</text>
+<text x="27" y="182" font-size="8" fill="#69738a">All stores, 2021–2025</text>
+<rect x="26" y="194" width="155" height="79" rx="8" fill="white" stroke="#e5e8f1"/><text x="38" y="212" font-size="7" fill="#69738a">Reviews</text><text x="38" y="238" font-size="23" font-weight="bold" letter-spacing="-.8" fill="#1d2538">191,919</text><text x="38" y="258" font-size="6.5" fill="#69738a">316 stores</text>
+<rect x="197" y="194" width="155" height="79" rx="8" fill="white" stroke="#e5e8f1"/><text x="209" y="212" font-size="7" fill="#69738a">Average rating</text><text x="209" y="238" font-size="23" font-weight="bold" letter-spacing="-.8" fill="#1d2538">4.89</text><text x="209" y="258" font-size="6.5" fill="#69738a">All stores</text>
+<rect x="368" y="194" width="155" height="79" rx="8" fill="white" stroke="#e5e8f1"/><text x="380" y="212" font-size="7" fill="#69738a">Rated 3 stars or lower</text><text x="380" y="238" font-size="23" font-weight="bold" letter-spacing="-.8" fill="#cf556a">2.2%</text><text x="380" y="258" font-size="6.5" fill="#69738a">Reviews in this selection</text>
+<rect x="539" y="194" width="155" height="79" rx="8" fill="white" stroke="#e5e8f1"/><text x="551" y="212" font-size="7" fill="#69738a">Reply within 24 hours</text><text x="551" y="238" font-size="23" font-weight="bold" letter-spacing="-.8" fill="#4b55e7">74.3%</text><text x="551" y="258" font-size="6.5" fill="#69738a">Reviews in this selection</text>
+<rect x="26" y="288" width="326" height="148" rx="8" fill="white" stroke="#e5e8f1"/><text x="40" y="309" font-size="11" font-weight="bold" fill="#1d2538">Reply times by year</text>
+<path d="M56 334h280" stroke="#edf0f6"/>
+<path d="M56 358h280" stroke="#edf0f6"/>
+<path d="M56 382h280" stroke="#edf0f6"/>
+<path d="M56 406h280" stroke="#edf0f6"/>
+<rect x="368" y="288" width="326" height="148" rx="8" fill="white" stroke="#e5e8f1"/><text x="382" y="309" font-size="11" font-weight="bold" fill="#1d2538">Volume and low ratings</text>
+<path d="M398 334h280" stroke="#edf0f6"/>
+<path d="M398 358h280" stroke="#edf0f6"/>
+<path d="M398 382h280" stroke="#edf0f6"/>
+<path d="M398 406h280" stroke="#edf0f6"/>
+<rect x="69" y="354.79" width="27" height="56.21" fill="#515ee8"/>
+<rect x="69" y="342.65" width="27" height="12.14" fill="#97a5f5"/>
+<rect x="69" y="340.26" width="27" height="2.39" fill="#efbe67"/>
+<rect x="69" y="326.24" width="27" height="14.02" fill="#dc7082"/>
+<rect x="69" y="326.00" width="27" height="0.24" fill="#dce0ed"/>
+<text x="71" y="425" font-size="6.5" fill="#69738a">2021</text>
+<rect x="123" y="351.97" width="27" height="59.03" fill="#515ee8"/>
+<rect x="123" y="334.01" width="27" height="17.95" fill="#97a5f5"/>
+<rect x="123" y="330.33" width="27" height="3.69" fill="#efbe67"/>
+<rect x="123" y="326.38" width="27" height="3.95" fill="#dc7082"/>
+<rect x="123" y="326.00" width="27" height="0.38" fill="#dce0ed"/>
+<text x="125" y="425" font-size="6.5" fill="#69738a">2022</text>
+<rect x="177" y="379.13" width="27" height="31.87" fill="#515ee8"/>
+<rect x="177" y="358.78" width="27" height="20.35" fill="#97a5f5"/>
+<rect x="177" y="348.10" width="27" height="10.68" fill="#efbe67"/>
+<rect x="177" y="327.75" width="27" height="20.35" fill="#dc7082"/>
+<rect x="177" y="326.00" width="27" height="1.75" fill="#dce0ed"/>
+<text x="179" y="425" font-size="6.5" fill="#69738a">2023</text>
+<rect x="231" y="338.70" width="27" height="72.30" fill="#515ee8"/>
+<rect x="231" y="332.60" width="27" height="6.10" fill="#97a5f5"/>
+<rect x="231" y="329.88" width="27" height="2.72" fill="#efbe67"/>
+<rect x="231" y="327.68" width="27" height="2.20" fill="#dc7082"/>
+<rect x="231" y="326.00" width="27" height="1.68" fill="#dce0ed"/>
+<text x="233" y="425" font-size="6.5" fill="#69738a">2024</text>
+<rect x="285" y="333.69" width="27" height="77.31" fill="#515ee8"/>
+<rect x="285" y="330.64" width="27" height="3.05" fill="#97a5f5"/>
+<rect x="285" y="329.24" width="27" height="1.40" fill="#efbe67"/>
+<rect x="285" y="329.00" width="27" height="0.24" fill="#dc7082"/>
+<rect x="285" y="326.00" width="27" height="3.00" fill="#dce0ed"/>
+<text x="287" y="425" font-size="6.5" fill="#69738a">2025</text>
+<rect x="399.00" y="405.17" width="3.3" height="5.83" fill="#dce0ed"/>
+<rect x="403.60" y="406.32" width="3.3" height="4.68" fill="#dce0ed"/>
+<rect x="408.20" y="406.98" width="3.3" height="4.02" fill="#dce0ed"/>
+<rect x="412.80" y="407.37" width="3.3" height="3.63" fill="#dce0ed"/>
+<rect x="417.40" y="410.48" width="3.3" height="0.52" fill="#dce0ed"/>
+<rect x="422.00" y="405.68" width="3.3" height="5.32" fill="#dce0ed"/>
+<rect x="426.60" y="399.08" width="3.3" height="11.92" fill="#dce0ed"/>
+<rect x="431.20" y="400.73" width="3.3" height="10.27" fill="#dce0ed"/>
+<rect x="435.80" y="400.48" width="3.3" height="10.52" fill="#dce0ed"/>
+<rect x="440.40" y="381.73" width="3.3" height="29.27" fill="#dce0ed"/>
+<rect x="445.00" y="399.43" width="3.3" height="11.57" fill="#dce0ed"/>
+<rect x="449.60" y="379.29" width="3.3" height="31.71" fill="#dce0ed"/>
+<rect x="454.20" y="379.81" width="3.3" height="31.19" fill="#dce0ed"/>
+<rect x="458.80" y="351.23" width="3.3" height="59.77" fill="#dce0ed"/>
+<rect x="463.40" y="387.96" width="3.3" height="23.04" fill="#dce0ed"/>
+<rect x="468.00" y="386.43" width="3.3" height="24.57" fill="#dce0ed"/>
+<rect x="472.60" y="387.07" width="3.3" height="23.93" fill="#dce0ed"/>
+<rect x="477.20" y="387.93" width="3.3" height="23.07" fill="#dce0ed"/>
+<rect x="481.80" y="382.98" width="3.3" height="28.02" fill="#dce0ed"/>
+<rect x="486.40" y="367.30" width="3.3" height="43.70" fill="#dce0ed"/>
+<rect x="491.00" y="371.93" width="3.3" height="39.07" fill="#dce0ed"/>
+<rect x="495.60" y="382.50" width="3.3" height="28.50" fill="#dce0ed"/>
+<rect x="500.20" y="377.55" width="3.3" height="33.45" fill="#dce0ed"/>
+<rect x="504.80" y="374.22" width="3.3" height="36.78" fill="#dce0ed"/>
+<rect x="509.40" y="369.90" width="3.3" height="41.10" fill="#dce0ed"/>
+<rect x="514.00" y="370.72" width="3.3" height="40.28" fill="#dce0ed"/>
+<rect x="518.60" y="379.16" width="3.3" height="31.84" fill="#dce0ed"/>
+<rect x="523.20" y="379.94" width="3.3" height="31.06" fill="#dce0ed"/>
+<rect x="527.80" y="381.72" width="3.3" height="29.28" fill="#dce0ed"/>
+<rect x="532.40" y="378.51" width="3.3" height="32.49" fill="#dce0ed"/>
+<rect x="537.00" y="340.13" width="3.3" height="70.87" fill="#dce0ed"/>
+<rect x="541.60" y="380.26" width="3.3" height="30.74" fill="#dce0ed"/>
+<rect x="546.20" y="384.79" width="3.3" height="26.21" fill="#dce0ed"/>
+<rect x="550.80" y="390.31" width="3.3" height="20.69" fill="#dce0ed"/>
+<rect x="555.40" y="397.28" width="3.3" height="13.72" fill="#dce0ed"/>
+<rect x="560.00" y="383.57" width="3.3" height="27.43" fill="#dce0ed"/>
+<rect x="564.60" y="367.23" width="3.3" height="43.77" fill="#dce0ed"/>
+<rect x="569.20" y="360.68" width="3.3" height="50.32" fill="#dce0ed"/>
+<rect x="573.80" y="359.46" width="3.3" height="51.54" fill="#dce0ed"/>
+<rect x="578.40" y="363.06" width="3.3" height="47.94" fill="#dce0ed"/>
+<rect x="583.00" y="375.78" width="3.3" height="35.22" fill="#dce0ed"/>
+<rect x="587.60" y="370.66" width="3.3" height="40.34" fill="#dce0ed"/>
+<rect x="592.20" y="360.45" width="3.3" height="50.55" fill="#dce0ed"/>
+<rect x="596.80" y="352.60" width="3.3" height="58.40" fill="#dce0ed"/>
+<rect x="601.40" y="331.00" width="3.3" height="80.00" fill="#dce0ed"/>
+<rect x="606.00" y="361.65" width="3.3" height="49.35" fill="#dce0ed"/>
+<rect x="610.60" y="374.81" width="3.3" height="36.19" fill="#dce0ed"/>
+<rect x="615.20" y="362.37" width="3.3" height="48.63" fill="#dce0ed"/>
+<rect x="619.80" y="334.29" width="3.3" height="76.71" fill="#dce0ed"/>
+<rect x="624.40" y="342.52" width="3.3" height="68.48" fill="#dce0ed"/>
+<rect x="629.00" y="347.21" width="3.3" height="63.79" fill="#dce0ed"/>
+<rect x="633.60" y="358.59" width="3.3" height="52.41" fill="#dce0ed"/>
+<rect x="638.20" y="358.90" width="3.3" height="52.10" fill="#dce0ed"/>
+<rect x="642.80" y="358.60" width="3.3" height="52.40" fill="#dce0ed"/>
+<rect x="647.40" y="350.93" width="3.3" height="60.07" fill="#dce0ed"/>
+<rect x="652.00" y="353.38" width="3.3" height="57.62" fill="#dce0ed"/>
+<rect x="656.60" y="368.52" width="3.3" height="42.48" fill="#dce0ed"/>
+<rect x="661.20" y="372.58" width="3.3" height="38.42" fill="#dce0ed"/>
+<rect x="665.80" y="361.05" width="3.3" height="49.95" fill="#dce0ed"/>
+<rect x="670.40" y="350.92" width="3.3" height="60.08" fill="#dce0ed"/>
+<polyline points="399.00,387.43 403.60,344.25 408.20,351.94 412.80,369.72 417.40,363.29 422.00,399.25 426.60,392.12 431.20,390.30 435.80,376.52 440.40,391.78 445.00,331.00 449.60,369.60 454.20,382.94 458.80,388.20 463.40,357.27 468.00,335.68 472.60,332.10 477.20,349.23 481.80,363.25 486.40,377.24 491.00,381.56 495.60,367.13 500.20,375.49 504.80,373.61 509.40,386.36 514.00,385.86 518.60,383.12 523.20,384.03 527.80,374.28 532.40,380.98 537.00,394.95 541.60,369.92 546.20,379.99 550.80,374.75 555.40,334.44 560.00,376.81 564.60,385.29 569.20,386.65 573.80,390.86 578.40,394.31 583.00,390.77 587.60,394.88 592.20,395.91 596.80,393.87 601.40,400.22 606.00,387.44 610.60,390.96 615.20,396.86 619.80,398.78 624.40,400.23 629.00,398.45 633.60,397.64 638.20,403.56 642.80,399.79 647.40,397.05 652.00,397.76 656.60,395.99 661.20,388.55 665.80,399.74 670.40,401.01" fill="none" stroke="#cf556a" stroke-width="1.5"/>
+<text x="399.00" y="425" font-size="6.5" fill="#69738a">2021</text>
+<text x="454.20" y="425" font-size="6.5" fill="#69738a">2022</text>
+<text x="509.40" y="425" font-size="6.5" fill="#69738a">2023</text>
+<text x="564.60" y="425" font-size="6.5" fill="#69738a">2024</text>
+<text x="619.80" y="425" font-size="6.5" fill="#69738a">2025</text>
+</g></svg>

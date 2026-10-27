@@ -1,0 +1,481 @@
+/* Floating calculator. */
+
+/* ---------- calculator ---------- */
+.calc {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  pointer-events: none
+}
+
+.calc>* {
+  pointer-events: auto
+}
+
+.calc-fab {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--active-bg);
+  color: var(--active-fg);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 6px 20px var(--shadow);
+  transition: transform .15s
+}
+
+.calc-fab:hover {
+  transform: scale(1.06)
+}
+
+.calc-fab[aria-expanded="true"] {
+  background: var(--accent-hover);
+  color: var(--paper)
+}
+
+/* Tall rather than wide: fills the empty strip above the corner button. */
+.calc-panel {
+  width: 360px;
+  max-width: calc(100vw - 32px);
+  height: min(680px, calc(100vh - 96px));
+  display: flex;
+  flex-direction: column;
+  background: var(--surface-raised);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: 0 14px 40px var(--shadow);
+  padding: 16px 18px 18px;
+  transform-origin: bottom right;
+  transform: scale(.4);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform .18s ease, opacity .18s ease, visibility 0s .18s
+}
+
+.calc-panel.open {
+  transform: none;
+  opacity: 1;
+  visibility: visible;
+  transition: transform .18s ease, opacity .18s ease
+}
+
+.calc-top {
+  display: flex;
+  align-items: center;
+  gap: 4px
+}
+
+.calc-title {
+  flex: 1;
+  font-weight: 600;
+  font-size: 17px
+}
+
+.calc-icon {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  color: var(--muted)
+}
+
+.calc-icon:hover {
+  color: var(--ink);
+  background: var(--surface-hover)
+}
+
+/* History: oldest at the top, newest sitting just above the display. */
+.calc-hist {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0 10px;
+  border-bottom: 1px solid var(--line-soft);
+  scrollbar-width: thin
+}
+
+.calc-hist> :first-child {
+  margin-top: auto
+}
+
+.calc-hist button {
+  display: block;
+  width: 100%;
+  text-align: right;
+  padding: 6px 2px;
+  border-radius: 6px
+}
+
+.calc-hist button:hover .hr {
+  text-decoration: underline;
+  text-underline-offset: 3px
+}
+
+.calc-hist .he {
+  display: block;
+  font-size: 12.5px;
+  color: var(--muted);
+  overflow-wrap: break-word
+}
+
+.calc-hist .hr {
+  display: block;
+  font-size: 15px;
+  font-weight: 500
+}
+
+.calc-out {
+  min-height: 18px;
+  margin-top: 8px;
+  text-align: right;
+  font-size: 13px;
+  color: var(--muted)
+}
+
+.calc-out.err {
+  color: var(--danger)
+}
+
+.calc-screen {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  margin: 2px 0 14px
+}
+
+/* Long sums wrap onto more lines (and the text steps down a size)
+   instead of scrolling sideways. */
+.calc-screen textarea {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  padding: 0;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: right;
+  resize: none;
+  overflow-y: hidden;
+  overflow-wrap: break-word;
+  /* a space typed at the end shows straight away instead of hanging past the edge */
+  white-space: break-spaces;
+  max-height: calc(3 * 1.2em)
+}
+
+.calc-screen textarea.mid {
+  font-size: 24px
+}
+
+.calc-screen textarea.long {
+  font-size: 19px
+}
+
+.calc-screen textarea.scroll {
+  overflow-y: auto
+}
+
+.calc-keys {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 52px;
+  gap: 8px;
+  flex: none
+}
+
+.calc-keys button {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 500
+}
+
+.calc-keys button:hover {
+  background: var(--surface-hover);
+  border-color: var(--line-strong)
+}
+
+.calc-keys button:active {
+  background: var(--line-soft)
+}
+
+.calc-keys .sm {
+  height: 36px;
+  align-self: end
+}
+
+.calc-keys .zero {
+  grid-column: span 2;
+  text-align: left;
+  padding-left: 26px
+}
+
+.emi-sel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px
+}
+
+.emi-sel label {
+  margin: 0;
+  flex: none
+}
+
+.emi-sel select {
+  flex: 1;
+  min-width: 0;
+  padding: 7px 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--input);
+  font-size: 13px
+}
+
+.dues {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  margin-top: auto;
+  padding-top: 3px;
+  align-items: center;
+  min-width: 0
+}
+
+.due-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  line-height: 1;
+  padding: 3px 4px;
+  border-radius: 5px;
+  border: 1px solid var(--line);
+  background: var(--surface-muted);
+  max-width: 100%;
+  overflow: hidden
+}
+
+.due-tag b {
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0
+}
+
+.sq {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  flex: none;
+  display: block;
+  text-decoration: none
+}
+
+.sq.paid {
+  background: var(--ok)
+}
+
+.sq.part {
+  background: var(--warn)
+}
+
+.sq.due {
+  background: var(--bad)
+}
+
+.sq.nil {
+  background: var(--nil)
+}
+
+.sq.open {
+  background: transparent;
+  border: 1.5px solid var(--line-strong)
+}
+
+.bill {
+  cursor: pointer
+}
+
+.bill.sel {
+  background: var(--surface-muted)
+}
+
+.bill.sel .bar {
+  box-shadow: 0 0 0 1px var(--line-strong)
+}
+
+.paybill {
+  border-top: 1px solid var(--line-soft);
+  margin-top: 16px;
+  padding-top: 14px
+}
+
+.pb-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px
+}
+
+.pb-top .nm {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 15px;
+  font-weight: 500
+}
+
+.daychips {
+  display: flex;
+  flex-direction: column;
+  gap: 6px
+}
+
+.daychip {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  text-align: left;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 12.5px
+}
+
+.daychip:hover {
+  border-color: var(--line-strong);
+  background: var(--surface-hover)
+}
+
+.daychip b {
+  font-weight: 600;
+  white-space: nowrap
+}
+
+.daychip span {
+  color: var(--muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap
+}
+
+.daychip em {
+  margin-left: auto;
+  font-style: normal;
+  font-weight: 500;
+  white-space: nowrap
+}
+
+.daychip em.settled {
+  color: var(--ok)
+}
+
+.daychip em.owing {
+  color: var(--bad)
+}
+
+.daychip .sq {
+  margin-left: 0
+}
+
+.pan-figs {
+  display: flex;
+  gap: 14px;
+  margin: 14px 0 2px
+}
+
+.pan-figs .pv {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.1
+}
+
+.pan-figs .pv.owing {
+  color: var(--bad)
+}
+
+.pan-figs .pv.settled {
+  color: var(--ok)
+}
+
+.pan-figs .pk {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 2px
+}
+
+.pan-note {
+  font-size: 11.5px;
+  color: var(--muted);
+  margin-top: 8px
+}
+
+.pan-h {
+  font-size: 11px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 16px 0 7px
+}
+
+.pan-list {
+  max-height: 220px;
+  overflow: auto
+}
+
+.pay-row {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+  padding: 7px 0;
+  border-top: 1px solid var(--line-soft)
+}
+
+.pay-row:first-child {
+  border-top: none
+}
+
+.pay-row .pa {
+  font-weight: 500;
+  font-size: 13.5px
+}
+
+.pay-row .pd {
+  font-size: 11.5px;
+  color: var(--muted)
+}
+
+.pay-row .x {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1;
+  padding: 0 3px
+}
+
+.pay-row .x:hover {
+  color: var(--danger)
+}
+
+.due-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-right: 7px
+}

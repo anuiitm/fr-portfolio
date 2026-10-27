@@ -1,0 +1,347 @@
+:root {
+  --maroon: #7e2018;
+  --maroon-ink: #ffffff;
+  --gold: #f2b705;
+  --bg: #fbf8f1;
+  --card: #ffffff;
+  --ink: #221a16;
+  --muted: #6e625a;
+  --line: #e8dfd1;
+  --live: #fff3cd;
+  --live-line: #e0a800;
+  --radius: 12px;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --maroon: #e0a800;
+    --maroon-ink: #1a1208;
+    --bg: #141110;
+    --card: #1e1a18;
+    --ink: #f1ebe4;
+    --muted: #b0a59b;
+    --line: #342d29;
+    --live: #3a2a0c;
+    --live-line: #e0a800;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme='dark'] {
+  --maroon: #e0a800;
+  --maroon-ink: #1a1208;
+  --bg: #141110;
+  --card: #1e1a18;
+  --ink: #f1ebe4;
+  --muted: #b0a59b;
+  --line: #342d29;
+  --live: #3a2a0c;
+  --live-line: #e0a800;
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.5 system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+button,
+input {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--maroon);
+  outline-offset: 2px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.wrap {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* header: maroon band in both themes */
+.top {
+  background: #7e2018;
+  color: #fff;
+  padding: 18px 0;
+}
+
+.top-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top h1 {
+  margin: 0;
+  font-size: 1.6rem;
+  letter-spacing: -0.01em;
+}
+
+.tagline {
+  margin: 0;
+  opacity: 0.85;
+  font-size: 0.9rem;
+}
+
+.theme {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgb(255 255 255 / 0.4);
+  background: transparent;
+  color: #ffc107;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+/* pickers */
+.picker {
+  display: grid;
+  gap: 12px;
+  margin: 20px 0 14px;
+}
+
+/* Label beside the chips on wide screens, above them on narrow ones.
+   Plain flexbox: Safari can't lay out a <fieldset> as a grid. */
+.pick-row {
+  display: flex;
+  align-items: center;
+  gap: 8px 14px;
+}
+
+.pick-label {
+  flex: 0 0 56px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chips button {
+  white-space: nowrap;
+  border: 1px solid var(--line);
+  background: var(--card);
+  border-radius: 99px;
+  padding: 7px 14px;
+  cursor: pointer;
+}
+
+.chips button:hover {
+  border-color: var(--maroon);
+}
+
+.chips button[aria-pressed='true'] {
+  background: var(--maroon);
+  border-color: var(--maroon);
+  color: var(--maroon-ink);
+  font-weight: 600;
+}
+
+/* day navigation */
+.day-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card);
+}
+
+.step,
+.today {
+  min-width: 40px;
+  height: 40px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--bg);
+  cursor: pointer;
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.today {
+  font-size: 0.9rem;
+  padding: 0 14px;
+  margin-left: auto;
+}
+
+.date {
+  position: relative;
+  flex: 0 1 220px;
+}
+
+.date input {
+  width: 100%;
+  height: 40px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--bg);
+  padding: 0 12px;
+  color: transparent;
+}
+
+.date input::-webkit-datetime-edit {
+  color: transparent;
+}
+
+.date-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  font-weight: 600;
+  pointer-events: none;
+}
+
+.context {
+  margin: 16px 2px 10px;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+/* meals */
+.meals {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.meal {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.meal.is-live {
+  background: var(--live);
+  border-color: var(--live-line);
+  box-shadow: inset 0 3px 0 var(--live-line);
+}
+
+.meal.is-next {
+  border-color: var(--live-line);
+}
+
+.meal-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 8px;
+}
+
+.meal-head h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--maroon);
+}
+
+.meal-tag {
+  margin-left: auto;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 2px 8px;
+  border-radius: 99px;
+  background: var(--live-line);
+  color: #1a1208;
+}
+
+.dishes {
+  margin: 10px 0 0;
+  padding-left: 1.1em;
+  flex: 1;
+}
+
+.dishes li + li {
+  margin-top: 3px;
+}
+
+.common {
+  margin-top: 12px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.common summary {
+  cursor: pointer;
+}
+
+.common ul {
+  margin: 6px 0 0;
+  padding-left: 1.1em;
+}
+
+.empty {
+  grid-column: 1 / -1;
+  padding: 28px;
+  text-align: center;
+  color: var(--muted);
+  background: var(--card);
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+}
+
+.foot {
+  padding-bottom: 32px;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+@media (max-width: 520px) {
+  .pick-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .pick-label {
+    flex-basis: auto;
+  }
+
+  .date {
+    flex: 1;
+  }
+
+  .today {
+    padding: 0 10px;
+  }
+}

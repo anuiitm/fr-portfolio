@@ -1,0 +1,152 @@
+/* Payments tab. */
+
+/* ---------- payment history ---------- */
+.pay-card {
+  padding: 6px 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--input);
+  font-size: 12.5px
+}
+
+#view-pay .stat-row,
+#view-unpaid .stat-row {
+  margin-top: 14px
+}
+
+#unpaid-stats .v.left,
+.hist-mh .late {
+  color: var(--bad)
+}
+
+.hist-mh .gname b {
+  font-weight: 600
+}
+
+.hist-mh .link {
+  margin-left: 8px;
+  color: var(--muted);
+  text-decoration: underline;
+  text-underline-offset: 3px
+}
+
+.hist-mh .link:hover {
+  color: var(--ink)
+}
+
+.ulist {
+  padding: 2px 15px 6px 8px
+}
+
+.hist-mh {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 9px 15px 7px;
+  font-size: 12px;
+  color: var(--muted);
+  background: var(--surface-muted);
+  border-top: 1px solid var(--line-soft)
+}
+
+.hist-mh:first-child {
+  border-top: none
+}
+
+.hist-mh b {
+  color: var(--ink);
+  font-weight: 500
+}
+
+.hist {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 15px;
+  border-top: 1px solid var(--line-soft);
+  min-width: 0
+}
+
+.hist .hd {
+  width: 32px;
+  flex: none;
+  text-align: center;
+  line-height: 1.1
+}
+
+.hist .hd b {
+  display: block;
+  font-family: var(--serif);
+  font-size: 17px;
+  font-weight: 600
+}
+
+.hist .hd span {
+  font-size: 11px;
+  color: var(--muted)
+}
+
+.hist .bar {
+  width: 3px;
+  align-self: stretch;
+  min-height: 32px;
+  border-radius: 2px;
+  flex: none
+}
+
+.hist .hw {
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+  display: block
+}
+
+.hist .hw:hover .nm {
+  text-decoration: underline;
+  text-underline-offset: 3px
+}
+
+.hist .h1 {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13.5px;
+  min-width: 0
+}
+
+.hist .h1 .nm {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap
+}
+
+.hist .h1 .tag {
+  margin-left: 0;
+  flex: none
+}
+
+.hist .h2 {
+  display: block;
+  font-size: 11.5px;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis
+}
+
+.hist .ha {
+  font-weight: 500;
+  font-size: 14px;
+  white-space: nowrap
+}
+
+.hist .x {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1;
+  padding: 0 3px
+}
+
+.hist .x:hover {
+  color: var(--danger)
+}

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spend Calendar</title>
+  <meta name="description" content="A credit-card spend calendar: statement cycles, due dates, EMIs, part payments and unsettled charges. Runs in the browser with demo data.">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/calendar.css">
+  <link rel="stylesheet" href="css/cards.css">
+  <link rel="stylesheet" href="css/calculator.css">
+  <link rel="stylesheet" href="css/bills.css">
+  <link rel="stylesheet" href="css/payments.css">
+  <link rel="stylesheet" href="css/emis.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script src="js/theme-boot.js"></script>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <div class="top">
+      <div class="monthline">
+        <h1 id="mtitle">—</h1>
+      </div>
+      <div class="head-actions" id="head-actions">
+        <div class="headtotal">
+          <div class="big" id="grandtotal">₹0</div>
+          <div class="cap" id="grandcap">total spent</div>
+        </div>
+        <div class="headtotal headmini" id="headmini">
+          <div class="big left" id="head-left">₹0</div>
+          <div class="cap">left to pay</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tabs" id="tabs">
+      <button id="tab-cal" aria-pressed="true">Calendar</button>
+      <button id="tab-bills" aria-pressed="false">Bills<span class="count" id="bill-count"></span></button>
+      <button id="tab-emi" aria-pressed="false">EMIs<span class="count" id="emi-count"></span></button>
+      <button id="tab-pay" aria-pressed="false">Payments</button>
+      <button id="tab-unpaid" aria-pressed="false">Unsettled<span class="count" id="unpaid-count"></span></button>
+      <button id="tab-cards" aria-pressed="false">Cards<span class="count" id="cards-count"></span></button>
+      <div class="tab-due" id="tab-due">
+        <div class="v" id="head-billed">₹0</div>
+        <div class="k" id="head-billed-cap">due this month</div>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false"
+        aria-label="Switch to dark mode">
+        <span class="icon" aria-hidden="true">☾</span><span class="theme-label">Dark mode</span>
+      </button>
+    </div>
+
+    <div id="view-calendar">
+      <div class="summary">
+        <div class="propbar" id="propbar"></div>
+        <div class="legend" id="legend"></div>
+        <div class="due-legend" id="due-legend"></div>
+
+        <div class="toolbar">
+          <div class="toolbar-main">
+            <button class="link utility" id="backup">Save backup</button>
+            <button class="link utility" id="restore">Restore backup</button>
+            <button class="link utility" id="reset-demo" title="Clear this browser's data and load the demo again">Reset demo</button>
+            <input type="file" id="restore-file" accept="application/json,.json" hidden>
+            <div class="search" id="search">
+              <svg class="glass" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="7" cy="7" r="5"/><path d="M11 11l3.5 3.5"/></svg>
+              <input id="q" type="search" placeholder="Search amount, shop, item, for whom" autocomplete="off"
+                aria-label="Search transactions" aria-controls="q-results">
+              <button class="clr" id="q-clear" type="button" aria-label="Clear search" hidden>×</button>
+              <div class="sresults" id="q-results" hidden></div>
+            </div>
+            <button class="link" id="clear-filter" hidden>Clear filter</button>
+          </div>
+          <div class="nav">
+            <button id="prev" class="prev-btn"><span>Previous Month</span></button>
+            <button id="today" class="today-btn">Today</button>
+            <button id="next" class="next-btn"><span>Next Month</span></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="cols">
+        <div class="cal">
+          <div class="dow">
+            <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+          </div>
+          <div class="grid" id="grid"></div>
+        </div>
+
+        <aside class="panel">
+          <h2 id="p-date">—</h2>
+          <div class="sub" id="p-sub">Pick a day to start</div>
+          <div class="panel-due" id="p-due" hidden></div>
+          <div class="list" id="p-list"></div>
+          <div class="paybill" id="tx-pay" hidden></div>
+
+          <form id="f">
+            <div class="f-row">
+              <div style="flex:1">
+                <label for="amt" id="amt-label">Amount</label>
+                <input id="amt" type="number" inputmode="decimal" step="0.01" min="0" placeholder="0" required>
+              </div>
+              <div style="flex:1.3">
+                <label for="shop">Shop / website</label>
+                <input id="shop" type="text" list="shops" placeholder="Croma" autocomplete="off">
+              </div>
+            </div>
+
+            <div class="f-row">
+              <div style="flex:1">
+                <label for="desc">Description / items</label>
+                <textarea id="desc" rows="2" placeholder="1. Headphones" autocomplete="off" spellcheck="false"></textarea>
+              </div>
+            </div>
+
+            <div class="f-row">
+              <div style="flex:1">
+                <label for="who">For whom</label>
+                <input id="who" type="text" list="whos" placeholder="Self" autocomplete="off">
+              </div>
+              <div>
+                <label>Converted to EMI?</label>
+                <div class="yn" id="emi-yn">
+                  <button type="button" data-v="1" aria-pressed="false">Yes</button>
+                  <button type="button" data-v="0" aria-pressed="true">No</button>
+                </div>
+              </div>
+            </div>
+
+            <datalist id="shops"></datalist>
+            <datalist id="whos"></datalist>
+
+            <label>Paid with</label>
+            <div class="pills" id="pills"></div>
+
+            <div class="emi-box" id="emi-box" hidden>
+              <div class="emi-grid">
+                <div>
+                  <label for="tenure">Tenure</label>
+                  <input id="tenure" type="number" min="2" max="36" step="1" value="3">
+                </div>
+                <div>
+                  <label for="rate">Interest % p.a.</label>
+                  <input id="rate" type="number" min="0" max="60" step="0.01" placeholder="0">
+                </div>
+                <div>
+                  <label for="fee">Processing fee</label>
+                  <input id="fee" type="number" min="0" step="1" placeholder="0">
+                </div>
+              </div>
+              <div class="emi-nc">
+                <label for="nc-yn">No-cost EMI?</label>
+                <div class="yn" id="nc-yn">
+                  <button type="button" data-v="1" aria-pressed="false">Yes</button>
+                  <button type="button" data-v="0" aria-pressed="true">No</button>
+                </div>
+              </div>
+              <div class="emi-sel">
+                <label for="startsel">First instalment</label>
+                <select id="startsel"></select>
+              </div>
+              <div class="emi-preview" id="emi-preview" hidden></div>
+            </div>
+
+            <div class="emi-note" id="emi-note" hidden></div>
+
+            <div class="actions">
+              <button class="save" id="savebtn" type="submit">Add expense</button>
+              <button class="ghost danger" id="del" type="button" hidden>Delete</button>
+              <button class="ghost" id="cancel" type="button" hidden>Cancel</button>
+            </div>
+          </form>
+        </aside>
+      </div>
+    </div><!-- /view-calendar -->
+
+    <div id="view-bills" hidden>
+      <div class="toolbar">
+        <div class="toolbar-main">
+          <div class="search">
+            <svg class="glass" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="7" cy="7" r="5"/><path d="M11 11l3.5 3.5"/></svg>
+            <input id="bq" type="search" placeholder="Search amount, shop, item, for whom" autocomplete="off"
+              aria-label="Search transactions" aria-controls="bq-results">
+            <button class="clr" id="bq-clear" type="button" aria-label="Clear search" hidden>×</button>
+            <div class="sresults" id="bq-results" hidden></div>
+          </div>
+        </div>
+        <div class="nav">
+          <button id="b-prev" class="prev-btn"><span>Previous Month</span></button>
+          <button id="b-today" class="today-btn">Today</button>
+          <button id="b-next" class="next-btn"><span>Next Month</span></button>
+        </div>
+      </div>
+      <div class="stat-row" id="bill-stats"></div>
+      <div class="block bill-list" id="bill-list"></div>
+    </div>
+
+    <div id="view-pay" hidden>
+      <div class="toolbar">
+        <div class="toolbar-main">
+          <div class="seg" id="pay-kind">
+            <button type="button" data-k="all" aria-pressed="true">All</button>
+            <button type="button" data-k="bill" aria-pressed="false">Bill payments</button>
+            <button type="button" data-k="tx" aria-pressed="false">Charge payments</button>
+          </div>
+          <select class="pay-card" id="pay-card" aria-label="Card"></select>
+          <div class="search">
+            <svg class="glass" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="7" cy="7" r="5"/><path d="M11 11l3.5 3.5"/></svg>
+            <input id="pq" type="search" placeholder="Search amount, card, what it paid for" autocomplete="off"
+              aria-label="Search payments" aria-controls="pay-list">
+            <button class="clr" id="pq-clear" type="button" aria-label="Clear search" hidden>×</button>
+          </div>
+        </div>
+      </div>
+      <div class="stat-row" id="pay-stats"></div>
+      <div class="block" id="pay-list"></div>
+    </div>
+
+    <div id="view-unpaid" hidden>
+      <div class="toolbar">
+        <div class="toolbar-main">
+          <div class="seg" id="unpaid-scope">
+            <button type="button" data-k="now" aria-pressed="true">Up to today</button>
+            <button type="button" data-k="later" aria-pressed="false">Upcoming</button>
+            <button type="button" data-k="all" aria-pressed="false">All</button>
+          </div>
+          <select class="pay-card" id="unpaid-card" aria-label="Card"></select>
+          <div class="search">
+            <svg class="glass" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="7" cy="7" r="5"/><path d="M11 11l3.5 3.5"/></svg>
+            <input id="uq" type="search" placeholder="Search amount, shop, item, for whom" autocomplete="off"
+              aria-label="Search unsettled charges" aria-controls="unpaid-list">
+            <button class="clr" id="uq-clear" type="button" aria-label="Clear search" hidden>×</button>
+          </div>
+        </div>
+      </div>
+      <div class="stat-row" id="unpaid-stats"></div>
+      <div class="block" id="unpaid-list"></div>
+    </div>
+
+    <div id="view-cards" hidden>
+      <div class="toolbar">
+        <div class="toolbar-main">
+          <button class="btn-s primary" id="card-add" type="button">Add card</button>
+        </div>
+      </div>
+      <div class="stat-row" id="cards-stats"></div>
+      <div class="block">
+        <h3>Your cards: statement and due dates</h3>
+        <div id="cards-list"></div>
+      </div>
+      <p class="cards-note">The statement day is when a card's cycle closes; leave it blank to keep that card on plain
+        calendar months. The due date is when the bill has to be paid — set one to see the card's bills in the Bills tab.
+        A card can only be deleted once nothing is recorded on it.</p>
+    </div>
+
+    <div id="view-emis" hidden>
+      <div class="stat-row" id="emi-stats"></div>
+      <div class="emi-wrap">
+        <div class="block">
+          <h3>Running plans</h3>
+          <div id="emi-plans"></div>
+        </div>
+        <div class="block">
+          <h3>Committed by statement month</h3>
+          <div class="body" id="emi-forward"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="calc" id="calc">
+    <div class="calc-panel" id="calc-panel" role="dialog" aria-label="Calculator" aria-hidden="true" inert>
+      <div class="calc-top">
+        <span class="calc-title">Calculator</span>
+        <button class="calc-icon" id="calc-clear-hist" type="button" title="Clear history" aria-label="Clear history">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 5.5h13M8 5.5V3.5h4v2M5.5 5.5l.8 11h7.4l.8-11M8.5 8.5v5M11.5 8.5v5"/></svg>
+        </button>
+        <button class="calc-icon" id="calc-close" type="button" title="Close" aria-label="Close calculator">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"
+            stroke-linecap="round" aria-hidden="true"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9"/></svg>
+        </button>
+      </div>
+      <div class="calc-hist" id="calc-hist" aria-label="Calculation history"></div>
+      <div class="calc-out" id="calc-out" aria-live="polite"></div>
+      <div class="calc-screen">
+        <button class="calc-icon" id="calc-copy" type="button" title="Copy" aria-label="Copy result">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"
+            stroke-linejoin="round" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="2"/><path d="M13 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/></svg>
+        </button>
+        <textarea id="calc-in" rows="1" autocomplete="off" spellcheck="false" aria-label="Expression"
+          aria-describedby="calc-out"></textarea>
+      </div>
+      <div class="calc-keys" id="calc-keys">
+        <button type="button" data-k="(" class="sm">(</button>
+        <button type="button" data-k=")" class="sm">)</button>
+        <button type="button" data-k="neg" class="sm" aria-label="Plus or minus">±</button>
+        <button type="button" data-k="²" class="sm" aria-label="Square">x²</button>
+        <button type="button" data-k="C" aria-label="Clear">C</button>
+        <button type="button" data-k="back" aria-label="Backspace">
+          <svg width="20" height="16" viewBox="0 0 20 16" fill="none" stroke="currentColor" stroke-width="1.6"
+            stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M6.5 2H17a1.5 1.5 0 0 1 1.5 1.5v9A1.5 1.5 0 0 1 17 14H6.5L1.5 8z"/><path d="M9.5 5.5l5 5M14.5 5.5l-5 5"/></svg>
+        </button>
+        <button type="button" data-k="%">%</button>
+        <button type="button" data-k="÷">÷</button>
+        <button type="button" data-k="7">7</button>
+        <button type="button" data-k="8">8</button>
+        <button type="button" data-k="9">9</button>
+        <button type="button" data-k="×">×</button>
+        <button type="button" data-k="4">4</button>
+        <button type="button" data-k="5">5</button>
+        <button type="button" data-k="6">6</button>
+        <button type="button" data-k="−">−</button>
+        <button type="button" data-k="1">1</button>
+        <button type="button" data-k="2">2</button>
+        <button type="button" data-k="3">3</button>
+        <button type="button" data-k="+">+</button>
+        <button type="button" data-k="0" class="zero">0</button>
+        <button type="button" data-k=".">.</button>
+        <button type="button" data-k="=">=</button>
+      </div>
+    </div>
+    <button class="calc-fab" id="calc-fab" type="button" aria-expanded="false" aria-controls="calc-panel"
+      aria-label="Open calculator" title="Calculator (press C)">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"
+        stroke-linecap="round" aria-hidden="true"><rect x="3.5" y="2.5" width="13" height="15" rx="2.5"/><path d="M6.5 6h7M6.5 10h1M9.5 10h1M12.5 10h1M6.5 13.5h1M9.5 13.5h1M12.5 13.5h1"/></svg>
+    </button>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <div class="bar-tip" id="bar-tip" role="tooltip"></div>
+
+  <script src="js/core.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/billing.js"></script>
+  <script src="js/emi-math.js"></script>
+  <script src="js/pages/emis.js"></script>
+  <script src="js/pages/bills.js"></script>
+  <script src="js/pages/payments.js"></script>
+  <script src="js/pages/unsettled.js"></script>
+  <script src="js/tabs.js"></script>
+  <script src="js/pages/calendar.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/pages/expense-form.js"></script>
+  <script src="js/pages/cards.js"></script>
+  <script src="js/backup.js"></script>
+  <script src="js/demo.js"></script>
+  <script src="js/calculator.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,121 @@
+/* Cards tab. */
+
+/* ---------- cards view ---------- */
+#view-cards .stat-row {
+  margin-top: 14px
+}
+
+.crow {
+  border-top: 1px solid var(--line-soft)
+}
+
+.crow:first-child {
+  border-top: none
+}
+
+.crow-main {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 15px
+}
+
+.crow-main .bar {
+  width: 4px;
+  align-self: stretch;
+  border-radius: 99px;
+  flex: none
+}
+
+.crow-main .cw {
+  flex: 1;
+  min-width: 0
+}
+
+.crow-main .c1 {
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap
+}
+
+.crow-main .c2 {
+  display: block;
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 2px
+}
+
+.crow-main .cfig {
+  text-align: right;
+  flex: none;
+  font-size: 12px;
+  color: var(--muted)
+}
+
+.crow-main .cfig b {
+  display: block;
+  font-size: 14px;
+  color: var(--ink);
+  font-weight: 500
+}
+
+.crow-main .cact {
+  display: flex;
+  gap: 6px;
+  flex: none
+}
+
+.card-form {
+  padding: 12px 15px 14px;
+  background: var(--surface-muted);
+  border-top: 1px solid var(--line-soft)
+}
+
+.crow:first-child>.card-form:first-child {
+  border-top: none
+}
+
+.card-form .cf-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) 64px 92px 172px 92px;
+  gap: 8px;
+  align-items: end
+}
+
+.card-form select,
+.card-form input[type=color] {
+  width: 100%;
+  height: 38px;
+  padding: 6px 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--input)
+}
+
+.card-form input[type=color] {
+  padding: 4px;
+  cursor: pointer
+}
+
+.crow-main .btn-s[aria-disabled="true"] {
+  opacity: .45;
+  cursor: not-allowed
+}
+
+.card-form .bill-actions {
+  margin-top: 10px
+}
+
+.card-form .cf-err {
+  color: var(--danger);
+  font-size: 12.5px;
+  margin-top: 8px
+}
+
+.cards-note {
+  font-size: 12.5px;
+  color: var(--muted);
+  margin: 12px 2px 0;
+  max-width: 720px
+}

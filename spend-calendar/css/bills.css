@@ -1,0 +1,454 @@
+/* Bills tab, plus the small buttons (.btn-s) used across the app. */
+
+/* ---------- bills view ---------- */
+.bill {
+  display: flex;
+  gap: 12px;
+  padding: 14px 15px;
+  border-top: 1px solid var(--line-soft);
+  align-items: flex-start;
+  min-width: 0
+}
+
+.bill:first-child {
+  border-top: none
+}
+
+.bill .bar {
+  width: 3px;
+  border-radius: 2px;
+  align-self: stretch;
+  min-height: 46px;
+  flex: none
+}
+
+.bill .bw {
+  flex: 1;
+  min-width: 0
+}
+
+.bill .t1 {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: baseline;
+  flex-wrap: wrap
+}
+
+.bill .nm {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 15px;
+  font-weight: 500
+}
+
+.bill .when,
+.paybill .when {
+  font-size: 12.5px;
+  color: var(--muted)
+}
+
+.bill .when.late,
+.paybill .when.late {
+  color: var(--bad)
+}
+
+.bill .cyc2,
+.paybill .cyc2 {
+  font-size: 11.5px;
+  color: var(--muted);
+  margin-top: 2px
+}
+
+.bill .prog2,
+.paybill .prog2 {
+  display: block;
+  height: 5px;
+  border-radius: 99px;
+  background: var(--line-soft);
+  overflow: hidden;
+  margin: 9px 0 7px
+}
+
+.bill .prog2 i,
+.paybill .prog2 i {
+  display: block;
+  height: 100%;
+  transition: width .3s ease
+}
+
+.bill .figs {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 12.5px;
+  color: var(--muted)
+}
+
+.bill .figs b {
+  color: var(--ink);
+  font-weight: 500
+}
+
+.bill .figs .left.owing b {
+  color: var(--bad)
+}
+
+.bill .figs .left.settled b {
+  color: var(--ok)
+}
+
+.bill-actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 10px
+}
+
+.btn-s {
+  padding: 6px 11px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 12.5px;
+  white-space: nowrap
+}
+
+.btn-s:hover {
+  border-color: var(--line-strong);
+  background: var(--surface-hover)
+}
+
+.btn-s.primary {
+  background: var(--active-bg);
+  border-color: var(--active-bg);
+  color: var(--active-fg)
+}
+
+.btn-s.primary:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover)
+}
+
+[data-theme="dark"] .btn-s.primary:hover {
+  color: var(--active-bg)
+}
+
+.btn-s.quiet {
+  border-color: transparent;
+  color: var(--muted)
+}
+
+.btn-s.quiet:hover {
+  color: var(--ink);
+  border-color: var(--line)
+}
+
+.payform {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 9px;
+  padding: 9px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface-muted)
+}
+
+.payform input {
+  width: 140px;
+  padding: 7px 9px
+}
+
+.payform .hint {
+  font-size: 11.5px;
+  color: var(--muted)
+}
+
+.paylog {
+  margin-top: 9px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px
+}
+
+.paylog .p {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11.5px;
+  color: var(--muted)
+}
+
+.paylog .p .pv {
+  color: var(--ink);
+  font-weight: 500
+}
+
+.paylog .p .x {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1;
+  padding: 0 4px
+}
+
+.paylog .p .x:hover {
+  color: var(--danger)
+}
+
+.bill-empty {
+  padding: 22px 15px;
+  font-size: 13px;
+  color: var(--muted)
+}
+
+.bill-empty .btn-s {
+  margin-top: 10px
+}
+
+/* Bills tab: "left to pay" takes the headline slot, and the due figure
+   drops to the tab row so it sits beside the theme toggle. */
+body:not([data-tab="bills"]) .headmini,
+body:not([data-tab="bills"]) .tab-due {
+  display: none
+}
+
+body[data-tab="bills"] .headtotal:not(.headmini) {
+  display: none
+}
+
+.headmini .big.left {
+  color: var(--bad)
+}
+
+.headmini .big.clear {
+  color: var(--ok)
+}
+
+#bill-stats .v.left {
+  color: var(--bad)
+}
+
+#view-bills .stat-row {
+  margin-top: 14px
+}
+
+#bill-stats .v.clear {
+  color: var(--ok)
+}
+
+.tab-due {
+  text-align: right;
+  margin-left: auto;
+  margin-bottom: 6px;
+  flex: none
+}
+
+body[data-tab="bills"] .tabs .theme-toggle {
+  margin-left: 14px
+}
+
+.tab-due .v {
+  font-family: var(--serif);
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -.02em;
+  line-height: 1
+}
+
+.tab-due .k {
+  font-size: 11.5px;
+  color: var(--muted);
+  margin-top: 3px
+}
+
+/* ---------- bill list ---------- */
+.brow {
+  border-top: 1px solid var(--line-soft)
+}
+
+.brow:first-child {
+  border-top: none
+}
+
+.brow.dim .bhead {
+  opacity: .45
+}
+
+.bhead {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 14px 15px;
+  text-align: left;
+  min-width: 0
+}
+
+.bhead:hover {
+  background: var(--surface-hover)
+}
+
+.brow.open .bhead {
+  background: var(--surface-muted)
+}
+
+.bhead .bar {
+  width: 3px;
+  align-self: stretch;
+  min-height: 44px;
+  border-radius: 2px;
+  flex: none
+}
+
+.bhead .bw {
+  display: block;
+  flex: 1;
+  min-width: 0
+}
+
+.bhead .t1 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap
+}
+
+.bhead .nm {
+  font-size: 15px;
+  font-weight: 500
+}
+
+.bstat {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: var(--muted)
+}
+
+.bstat.late {
+  color: var(--bad)
+}
+
+.bhead .t2 {
+  display: block;
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis
+}
+
+.bhead .prog2 {
+  display: block;
+  height: 4px;
+  max-width: 460px;
+  border-radius: 99px;
+  background: var(--line-soft);
+  overflow: hidden;
+  margin-top: 8px
+}
+
+.bhead .prog2 i {
+  display: block;
+  height: 100%
+}
+
+.bfig {
+  display: block;
+  flex: none;
+  text-align: right
+}
+
+.bfig b {
+  display: block;
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.2
+}
+
+.bfig span {
+  font-size: 12px;
+  color: var(--muted)
+}
+
+.bfig .owing {
+  color: var(--bad)
+}
+
+.bfig .settled {
+  color: var(--ok)
+}
+
+.chev {
+  flex: none;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1;
+  transition: transform .15s ease
+}
+
+.brow.open .chev {
+  transform: rotate(90deg)
+}
+
+.bbody {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 22px;
+  align-items: start;
+  padding: 6px 15px 18px 32px
+}
+
+.bbody .pan-h {
+  margin-top: 12px
+}
+
+.bpay {
+  margin-top: 12px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-top: 1px solid var(--line);
+  border-radius: var(--r);
+  background: var(--surface)
+}
+
+.bpay .pan-figs {
+  margin-top: 0
+}
+
+.txr {
+  border-top: 1px solid var(--line-soft)
+}
+
+.txr:first-child {
+  border-top: none
+}
+
+.txr .dt {
+  width: 44px;
+  flex: none;
+  font-size: 12px;
+  color: var(--muted)
+}
+
+.txbox {
+  margin: 0 0 12px 38px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-top: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface)
+}
+
+.bill-list .none a {
+  color: inherit
+}

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IPO Forensics</title>
+  <meta name="description" content="Read an Indian IPO's offer document section by section, with every passage cited to its page. Front-end demo of a local RAG system.">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23141414'/%3E%3Ccircle cx='14' cy='14' r='6' fill='none' stroke='%23f3efe6' stroke-width='2.4'/%3E%3Cpath d='M18.5 18.5 25 25' stroke='%23c2412d' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="masthead">
+    <div class="wrap">
+      <p class="kicker">Offer documents, read closely</p>
+      <h1>IPO Forensics</h1>
+      <p class="dek">Pick a company to see what its DRHP, investor deck and earnings call say on ten questions an analyst asks before an IPO. Every passage links to its page.</p>
+    </div>
+  </header>
+
+  <main id="main" class="wrap">
+    <section class="companies" aria-labelledby="pick">
+      <h2 id="pick" class="label">Company</h2>
+      <div class="company-list" id="companies" role="group" aria-labelledby="pick"></div>
+    </section>
+
+    <nav class="views" aria-label="View">
+      <button type="button" data-view="report" aria-pressed="true">Forensics report</button>
+      <button type="button" data-view="ask" aria-pressed="false">Ask a question</button>
+    </nav>
+
+    <section id="view-report" class="report" aria-live="polite">
+      <aside class="toc" aria-label="Report sections">
+        <ol id="toc"></ol>
+        <p class="note" id="stats"></p>
+      </aside>
+      <div id="report"></div>
+    </section>
+
+    <section id="view-ask" class="ask" hidden>
+      <form id="ask-form" class="ask-form">
+        <label for="q" class="label">Your question</label>
+        <div class="ask-row">
+          <input id="q" type="search" autocomplete="off" placeholder="e.g. Who are the top customers?" required>
+          <button type="submit">Search</button>
+        </div>
+        <div class="examples" id="examples"></div>
+      </form>
+      <div id="answer"></div>
+    </section>
+  </main>
+
+  <footer class="foot wrap">
+    <p><b>How this demo differs from the full system.</b> The full app indexes all 10,317 chunks of 15 PDFs in ChromaDB and has Llama 3.1 8B (via Ollama) write each section from the retrieved passages. This page has no server. It ships 217 of those passages and runs the same retrieval in your browser, so you see the evidence the model would be given rather than a generated summary. Nothing here is investment advice.</p>
+  </footer>
+
+  <template id="passage-tpl">
+    <figure class="passage">
+      <blockquote></blockquote>
+      <figcaption><span class="cite"></span><button type="button" class="more">Show full passage</button></figcaption>
+    </figure>
+  </template>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
